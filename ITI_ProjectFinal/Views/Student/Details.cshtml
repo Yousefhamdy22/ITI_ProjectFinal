@@ -1,0 +1,29 @@
+﻿@model Student
+
+<dl class="row">
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Id)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Id)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Name)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Name)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Degree)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Degree)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.ImageUrl)</dt>
+    <dd class="col-9">
+        <img src="@Url.Content("~/"+Model.ImageUrl)" alt="Student Image" class="img-thumbnail" style="max-width:150px;" />
+    </dd>
+</dl>
+
+<table class="table table-bordered table-hover caption-top text-center">
+    <caption class=" text-center fs-1"> Student By Id </caption>
+    <tbody>
+        <tr><th>Id</th><td>@Model.Id</td></tr>
+        <tr><th>Full Name</th><td>@Model.Name</td></tr>
+        <tr><th>Address</th><td>@Model.Degree</td></tr>
+        <tr><th>Image</th><td><img src="@Url.Content("~/"+Model.ImageUrl)" alt="Student Image" class="img-thumbnail" style="max-width:150px;" /></td></tr>
+    </tbody>
+</table>
+
+<a asp-controller="Student" asp-action="index">Back to List</a>

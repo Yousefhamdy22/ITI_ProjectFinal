@@ -1,0 +1,59 @@
+﻿@using ITI_ProjectFinal.ViewModel
+@model  instWithDep_CourseList_ModelView
+@* @{
+    SelectList DeptOption = new SelectList(ViewBag.Deptlist, "Id", "Name");
+    SelectList CourseOption = new SelectList(ViewBag.Course_list, "Id", "Name");
+
+
+} *@
+<h1 class="alert alert-primary text-center">
+    Add New Instructor
+</h1>
+
+<form method="post" asp-controller="Instructor" asp-action="SaveAdd" enctype="multipart/form-data">
+   
+    <div class="form-group ; mt-3">
+        <label asp-for="Name"></label>
+        <input class=" form form-control " asp-for="Name" />
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label asp-for="Address"></label>
+        <input class=" form form-control" asp-for="Address" />
+    </div>
+
+    <div class ="form-group ; mt-3">
+        <label asp-for="Salary"></label>
+        <input class=" form form-control " asp-for="Salary" />
+    </div>
+
+
+
+     <div class="form-group ; mt-3">
+        <label asp-for="DepartmentID">Instructor</label>
+        <select asp-for="DepartmentID" class="form-control"
+                asp-items="@(new SelectList(ViewData["Department_list"] as List<Department>, "Id", "Name"))"></select>
+        <span asp-validation-for="DepartmentID" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="form-group ; mt-3">
+        <label asp-for="CourseID">Instructor</label>
+        <select asp-for="CourseID" class="form-control"
+                asp-items="@(new SelectList(ViewData["Course_list"] as List<Course>, "Id", "Name"))"></select>
+        <span asp-validation-for="CourseID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label  asp-for="ImageFile">Upload Image</label>
+        <input type="file" asp-for="ImageFile" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+    <div class="form-group ; mt-3">
+        <button type="submit" class="btn btn-primary">Add</button>
+
+    </div>
+
+</form>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Course>
+
+<div class="mb-3">
+    <form method="get" asp-controller="Course" asp-action="Get" class="d-flex">
+        <input name="search" value="@ViewBag.CurrentSearch" class="form-control me-2" placeholder="Search by name " />
+        <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
+    </form>
+</div>
+@* 
+<div class="mb-3">
+    <a asp-controller="Course" asp-action="Add" class="btn btn-success">
+        Create New Course
+    </a>
+</div> *@
+
+<div class="row">
+    @if (Model.Count() > 0)
+    {
+        foreach (var course in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@course.Imagepath" class="card-img-top" alt="Course Image" style="height: 200px; object-fit: cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@course.Name</h5>
+                        <p class="card-text">
+                            <strong>Address:</strong> @course.Address<br />
+                            <strong>Minimum Degree:</strong> @course.minDegree
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="Course" asp-action="GetDetailsView" asp-route-id="@course.Id" class="btn btn-outline-primary">
+                                Details
+                            </a>
+                            <a asp-controller="Course" asp-action="GetEditView" asp-route-id="@course.Id" class="btn btn-outline-secondary">
+                                Edit
+                            </a>
+                            <a asp-controller="Course" asp-action="GetDeleteView" asp-route-id="@course.Id" class="btn btn-outline-danger">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <h1 class="alert alert-danger text-center m-3">No data to display</h1>
+    }
+</div>

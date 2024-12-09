@@ -1,0 +1,82 @@
+﻿@model  Instructor
+
+<h1 class="alrt alert-primary text-center m-2">
+    Instructor Details
+</h1>
+
+@*  U Dont Need Forech in details just boundy for show data
+<table class="table table-bordered table-hover caption-top text-center">
+    <caption class=" text-center fs-1"> Instructor By Id </caption>
+    <thead class=" alert-dark"> 
+
+        <tr>
+            <td>@Html.DisplayNameFor(Ins => Ins.Id)</td>
+            <td>@Html.DisplayNameFor(Ins => Ins.Name)</td>      
+            <td>@Html.DisplayNameFor(Ins => Ins.Salary)</td>
+            <td>@Html.DisplayNameFor(Ins => Ins.Address)</td>
+            <td>@Html.DisplayNameFor(Ins => Ins.ImageUrl)</td>
+            <td>@Html.DisplayNameFor(Ins => Ins.CourseID)</td>
+            <td>@Html.DisplayNameFor(Ins => Ins.DepartmentID)</td>
+        </tr>
+    </thead>
+    <tbody>
+             @foreach(var instructor in Model)
+             {
+                <tr>
+                    <td>@Html.DisplayFor(m => instructor.Id)</td>
+                    <td>@Html.DisplayFor(m => instructor.Name)</td>
+                    <td>@Html.DisplayFor(m => instructor.Address)</td>
+                    <td>@Html.DisplayFor(m => instructor.Salary)</td>
+                    <th>@Html.DisplayFor(m => instructor.ImageUrl)</th>
+                    <th>@Html.DisplayFor(m => instructor.DepartmentID)</th>
+                    <th>@Html.DisplayFor(m => instructor.CourseID)</th>
+                </tr>
+             }
+    </tbody>
+     
+
+
+</table>  *@
+
+
+
+<dl class="row">
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Id)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Id)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Name)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Name)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Salary)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Salary)</dd>
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.Address)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.Address)</dd>
+@* 
+     <dt class="col-3">@Html.DisplayNameFor(emp => emp.DepartmentID)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.DepartmentID)</dd>
+
+     <dt class="col-3">@Html.DisplayNameFor(emp => emp.CourseID)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.CourseID)</dd> *@
+
+    <dt class="col-3">@Html.DisplayNameFor(emp => emp.ImageUrl)</dt>
+    <dd class="col-9">@Html.DisplayFor(emp => emp.ImageUrl)</dd>
+
+ 
+
+</dl>
+<table class="table table-bordered table-hover caption-top text-center">
+    <caption class=" text-center fs-1"> Instructor By Id </caption>
+   
+    <tbody>
+        <tr><th>Id</th><td>@Model.Id</td></tr>
+        <tr><th>Full Name</th><td>@Model.Name</td></tr>
+        <tr><th>Address</th><td>@Model.Address</td></tr>
+        <tr><th>Salary</th><td>@Model.Salary</td></tr>
+        <tr><th>ImageUrl</th><td>@Model.ImageUrl</td></tr>
+     @*    <tr><th>DepartmentID</th><td>@Model.DepartmentID</td></tr>
+        <tr><th>CourseID</th><td>@Model.CourseID</td></tr> *@
+    </tbody>
+</table>
+
+<a asp-controller="Instructor" asp-action="index">Back to List</a>

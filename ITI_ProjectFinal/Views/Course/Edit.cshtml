@@ -1,0 +1,49 @@
+﻿@model CourseDto
+
+
+<form method="post" asp-controller="Course" asp-action="SaveEdit" class="col-6" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+   
+    <input type="hidden" asp-for="Imagepath" />
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">@Html.DisplayNameFor(cors => cors.Name)</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="minDegree" class="form-label">@Html.DisplayNameFor(cors => cors.minDegree)</label>
+        <input asp-for="minDegree" class="form-control" />
+        <span asp-validation-for="minDegree" class="text-danger"></span>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label">@Html.DisplayNameFor(cors => cors.Address)</label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+
+    <div>
+        <label asp-for="InstructorId">@Html.DisplayNameFor(cors => cors.InstructorId)</label>
+        <select asp-for="InstructorId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.AllInstructors , "Id", "Name"))">
+            <option value="0" disabled selected>--Select Department--</option>
+        </select>
+        <span asp-validation-for="InstructorId" class="text-danger"></span>
+    </div>
+
+   
+
+    <div class="mb-3">
+        <label asp-for="Imagepath" class="form-label"></label>
+        <input type="file" asp-for="ImageFile" accept=".png,.jpg" class="form-control" />
+
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+
+ </form>

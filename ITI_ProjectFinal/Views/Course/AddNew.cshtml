@@ -1,0 +1,58 @@
+﻿@model CourseDto
+
+
+<h1 class="alert alert-primary text-center">
+    Add New Course
+</h1>
+
+<form asp-controller="Course" asp-action="SaveAdd" method="post" enctype="multipart/form-data">
+
+    <div>
+        <label asp-for="Name">Name</label>
+        <input class=" form form-control" />
+    </div>
+
+    <div>
+        <label asp-for="minDegree">minDegree</label>
+        <input class=" form form-control" asp-for="minDegree" />
+
+    </div>
+
+
+    <div>
+        <label asp-for="Address">Address</label>
+        <input class=" form form-control" asp-for="Address" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InstructorId">Instructor</label>
+        <select asp-for="InstructorId" class="form-control"
+                asp-items="@(new SelectList(ViewData["Instructor_list"] as List<Instructor>, "Id", "Name"))"></select>
+        <span asp-validation-for="InstructorId" class="text-danger"></span>
+    </div
+
+    <div >
+        <label asp-for="ImageFile">Upload Image</label>
+        <input type="file" asp-for="ImageFile" class="form-control" />
+        <span asp-validation-for="ImageFile" class="text-danger"></span>
+    </div>
+
+   @*  <div>
+        <label asp-for="InstructorId"></label>
+
+        <select asp-for="InstructorId"
+                asp-items="instructorOption">
+
+            <option value="0">
+                --Select Department--
+            </option>
+
+        </select>
+    </div> *@
+
+   
+
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>

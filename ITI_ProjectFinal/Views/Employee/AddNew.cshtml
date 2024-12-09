@@ -1,0 +1,70 @@
+﻿@using ITI_ProjectFinal.ViewModel
+@model empWithDepatListViewModel
+
+@{
+    SelectList deptOptions = new SelectList(ViewBag.Deptlist, "Id", "Name"); // instead of casting implicit list of dep to list of ienumrable
+}
+<h1 class="alert alert-warning text-center m-3">  
+    Create New Employee
+</h1>
+<form method="post" asp-controller="Employee" asp-action="SaveAdd" enctype="multipart/form-data">
+    <div class="form-group ; mt-3">
+        <label asp-for="Name"></label>
+        <input  class=" form form-control"/>
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label asp-for="Address"></label>
+        <input  class=" form form-control" asp-for="Address"/>
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label asp-for="Salary"></label>
+        <input  class=" form form-control" asp-for="Salary"/>
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label asp-for="JobTitle"></label>
+        <input class=" form form-control" asp-for="JobTitle" />
+    </div >
+
+    <div class="form-group ; mt-3">
+        <label asp-for="ImageUrl"></label>
+        <input class=" form form-control" asp-for="ImageUrl" />
+    </div>
+
+    <div class="form-group ; mt-3">
+        <label asp-for="DepartmentiD"></label>
+@*         <input class=" form form-control" asp-for="DepartmentiD" />  
+           the next way instead of Foreach 
+*@
+        <select 
+            asp-for="DepartmentiD"
+                asp-items="deptOptions">
+
+                <option value="0">
+                    --Select Department--
+                </option> 
+           
+            @*  @foreach (var deptitem in Model.Departmentlist)
+            {
+                if(Model.DepartmentiD == deptitem.Id)
+                {
+                    <option value="@deptitem.Id" selected>
+                        @deptitem.Name
+                    </option>
+                }
+                else
+                {
+                    <option value="@deptitem.Id" >
+                        @deptitem.Name
+                    </option>
+                }
+            } *@
+         </select>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
